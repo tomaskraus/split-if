@@ -21,7 +21,7 @@ console.log(res);
 
 #### Example 2 (split by index)
 
-We can easily make a `partitionN` RxJS operator using `splitif`:
+We can easily make a `partitionN` RxJS operator using `splitIf`:
 
 ```ts
 import {OperatorFunction} from 'rxjs';
@@ -59,13 +59,13 @@ $ npm install split-if
 Typescript / ES module:
 
 ```ts
-import {splitif} from 'split-if';
+import {splitIf} from 'split-if';
 ```
 
 Javascript / CommonJS:
 
 ```js
-const {splitif} = require('split-if');
+const {splitIf} = require('split-if');
 ```
 
 ## API
