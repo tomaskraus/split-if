@@ -25,13 +25,18 @@ function splitIf(predicate, thisArg) {
         return new rxjs_1.Observable(observer => {
             const subscription = source.subscribe({
                 next(value) {
-                    if (predicate.call(thisArg, value, index++) && buffer.length > 0) {
-                        observer.next(buffer);
-                        buffer = [];
+                    try {
+                        if (predicate.call(thisArg, value, index++) && buffer.length > 0) {
+                            observer.next(buffer);
+                            buffer = [];
+                        }
+                        buffer.push(value);
                     }
-                    buffer.push(value);
+                    catch (e) {
+                        observer.error(e);
+                    }
                 },
-                error: observer.error,
+                error: (e) => observer.error(e),
                 complete() {
                     if (buffer.length > 0) {
                         observer.next(buffer);

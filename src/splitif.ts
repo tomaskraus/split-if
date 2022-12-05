@@ -26,13 +26,17 @@ export function splitIf<T>(
     return new Observable<T[]>(observer => {
       const subscription = source.subscribe({
         next(value) {
-          if (predicate.call(thisArg, value, index++) && buffer.length > 0) {
-            observer.next(buffer);
-            buffer = [];
+          try {
+            if (predicate.call(thisArg, value, index++) && buffer.length > 0) {
+              observer.next(buffer);
+              buffer = [];
+            }
+            buffer.push(value);
+          } catch (e) {
+            observer.error(e);
           }
-          buffer.push(value);
         },
-        error: observer.error,
+        error: (e: any) => observer.error(e),
         complete() {
           if (buffer.length > 0) {
             observer.next(buffer);
