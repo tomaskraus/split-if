@@ -1,6 +1,6 @@
 {
   "name": "split-if",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Splits an RxJS observer into a new array whenever a predicate is fulfilled.",
   "types": "build/src/index.d.ts",
   "main": "build/src/splitif.js",
