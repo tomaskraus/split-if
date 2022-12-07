@@ -42,6 +42,21 @@ describe('splitIf', () => {
         const destination = source.pipe((0, splitif_1.splitIf)(isZero));
         m.expect(destination).toBeObservable(expected);
     }));
+    test('use of this', (0, rxjs_marbles_1.marbles)(m => {
+        const source = m.hot('     --350204-5-|');
+        const expected = m.hot('   -----a-----(b|)', {
+            a: ['3', '5', '0'],
+            b: ['2', '0', '4', '5'],
+        });
+        const customThis = {
+            val: '2',
+        };
+        function predicate(value) {
+            return value === this.val;
+        }
+        const destination = source.pipe((0, splitif_1.splitIf)(predicate, customThis));
+        m.expect(destination).toBeObservable(expected);
+    }));
     test('split by index', (0, rxjs_marbles_1.marbles)(m => {
         const source = m.hot('     --35180-4-5-|');
         const expected = m.hot('   ----a-b---c-(d|)', {

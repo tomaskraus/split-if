@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.splitIf = void 0;
 const rxjs_1 = require("rxjs");
 /**
- * Packs all the source Observable values into arrays. These arrays are emitted every time a predicate is fulfilled.
+ * Packs all the source Observable values into arrays. New array is emitted every time a predicate is fulfilled.
  *
  * @example
  * ```js

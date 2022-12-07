@@ -69,6 +69,28 @@ describe('splitIf', () => {
   );
 
   test(
+    'use of this',
+    marbles(m => {
+      const source = m.hot('     --350204-5-|');
+      const expected = m.hot('   -----a-----(b|)', {
+        a: ['3', '5', '0'],
+        b: ['2', '0', '4', '5'],
+      });
+
+      const customThis = {
+        val: '2',
+      };
+
+      function predicate(value: string) {
+        return value === this.val;
+      }
+
+      const destination = source.pipe(splitIf(predicate, customThis));
+      m.expect(destination).toBeObservable(expected);
+    })
+  );
+
+  test(
     'split by index',
     marbles(m => {
       const source = m.hot('     --35180-4-5-|');
