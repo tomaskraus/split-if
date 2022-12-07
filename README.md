@@ -3,7 +3,7 @@
 
 # split-if
 
-RxJS operator. Packs all the RxJS source Observable values into arrays. These arrays are emitted every time a predicate is fulfilled.
+RxJS operator. Packs all the source Observable values into arrays. New array is emitted every time a predicate is fulfilled.
 
 See [RxJS](https://rxjs.dev/)
 

@@ -1,7 +1,7 @@
 import {Observable, OperatorFunction} from 'rxjs';
 
 /**
- * Packs all the source Observable values into arrays. These arrays are emitted every time a predicate is fulfilled.
+ * Packs all the source Observable values into arrays. New array is emitted every time a predicate is fulfilled.
  *
  * @example
  * ```js
