@@ -1,6 +1,6 @@
 {
   "name": "split-if",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "RxJS operator. Packs all the source Observable values into arrays. New array is emitted every time a predicate is fulfilled.",
   "types": "build/src/splitif.d.ts",
   "main": "build/src/splitif.js",
