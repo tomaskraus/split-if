@@ -7,6 +7,18 @@ describe('splitIf', () => {
     return +x === 0;
   }
 
+  class myObj {
+    val: string;
+
+    constructor(val: string) {
+      this.val = val;
+    }
+
+    predicate(value: string) {
+      return value === this.val;
+    }
+  }
+
   test(
     'empty',
     marbles(m => {
@@ -76,17 +88,23 @@ describe('splitIf', () => {
         a: ['3', '5', '0'],
         b: ['2', '0', '4', '5'],
       });
+      const expected2 = m.hot('  ----a-b----(c|)', {
+        a: ['3', '5'],
+        b: ['0', '2'],
+        c: ['0', '4', '5'],
+      });
 
+      const obj = new myObj('10');
       const customThis = {
         val: '2',
       };
-
-      function predicate(value: string) {
-        return value === this.val;
-      }
-
-      const destination = source.pipe(splitIf(predicate, customThis));
+      const destination = source.pipe(splitIf(obj.predicate, customThis));
       m.expect(destination).toBeObservable(expected);
+
+      // with object's own this
+      const obj2 = new myObj('0');
+      const destination2 = source.pipe(splitIf(obj2.predicate.bind(obj2)));
+      m.expect(destination2).toBeObservable(expected2);
     })
   );
 
