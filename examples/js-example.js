@@ -1,5 +1,5 @@
 const {from} = require('rxjs');
-// const {splitIf} = require('splitif');
+// const {splitIf} = require('split-if');
 
 const {splitIf} = require('../build/src/splitif');
 

@@ -13,7 +13,7 @@ See [RxJS](https://rxjs.dev/)
 
 ```js
 const {from} = require('rxjs');
-const {splitIf} = require('splitif');
+const {splitIf} = require('split-if');
 
 const src = from([4, 8, 1, 3, 5, 1, 1, 6, 8]).pipe(splitIf(x => x === 1));
 const res = [];
@@ -28,7 +28,7 @@ We can easily make a `partitionN` RxJS operator using `splitIf`:
 
 ```ts
 import {OperatorFunction} from 'rxjs';
-import {splitIf} from 'splitif';
+import {splitIf} from 'split-if';
 
 const partitionN = <T>(n: number): OperatorFunction<T, T[]> =>
   splitIf((_: T, i: number) => i % n === 0);
