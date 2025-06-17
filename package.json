@@ -38,10 +38,10 @@
     "posttest": "npm run lint"
   },
   "devDependencies": {
-    "@types/jest": "^28.1.6",
+    "@types/jest": "^30.0.0",
     "@types/node": "^24.0.1",
     "gts": "^5.0.1",
-    "jest": "^28.0.7",
+    "jest": "^30.0.0",
     "rxjs": "^7.5.7",
     "rxjs-marbles": "^7.0.1",
     "ts-jest": "^28.0.7",
